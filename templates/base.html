@@ -44,7 +44,10 @@
 
         <!-- CUSTOM -->
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        {% block 'css'%}
         <link rel="stylesheet" href="{% static 'css/index.css'%}">
+        {% endblock 'css'%}
+        
         <!--=====================================
                     CSS LINK PART END
         =======================================-->

@@ -17,6 +17,7 @@ class Products(models.Model):
     name = models.CharField(_('Name') , max_length=100)
     sku = models.IntegerField(_('SKU'))
     price = models.FloatField(_('Price'))
+    image = models.ImageField(upload_to = 'proudcts')
     brand = models.ForeignKey('Brand' , on_delete= models.SET_NULL  , null=True , blank= True , verbose_name= _('Brand') , related_name='brand_product')
     rate = models.IntegerField(_('Rate'))
     dec = models.TextField(_('dec') , max_length=300)
