@@ -5,6 +5,7 @@
         <!--=====================================
                     META TAG PART START
         =======================================-->
+        <!-- REQUIRE META -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,24 +29,22 @@
                     CSS LINK PART START
         =======================================-->
         <!-- FAVICON -->
-        <link rel="icon" href="{% static 'images/favicon.png' %}">
+        <link rel="icon" href="images/favicon.png">
 
         <!-- FONTS -->
         <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
-        <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css' %}">
-        <link rel="stylesheet" href="{% static 'fonts/fontawesome/fontawesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'fonts/icofont/icofont.min.css'%}">
+        <link rel="stylesheet" href="{% static 'fonts/fontawesome/fontawesome.min.css'%}">
 
         <!-- VENDOR -->
-        <link rel="stylesheet" href="{% static 'vendor/venobox/venobox.min.cs' %}s">
-        <link rel="stylesheet" href="{% static 'vendor/slickslider/slick.min.css' %}">
-        <link rel="stylesheet" href="{% static 'vendor/niceselect/nice-select.min.cs' %}">
-        <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/venobox/venobox.min.css'%}">
+        <link rel="stylesheet" href="{% static 'vendor/slickslider/slick.min.css'%}">
+        <link rel="stylesheet" href="{% static 'vendor/niceselect/nice-select.min.css'%}">
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css'%}">
 
         <!-- CUSTOM -->
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        {% block 'css'%}
-        <link rel="stylesheet" href="{% static 'css/index.css' %}">
-        {% endblock 'css'%}
+        <link rel="stylesheet" href="{% static 'css/index.css'%}">
         <!--=====================================
                     CSS LINK PART END
         =======================================-->
@@ -53,11 +52,7 @@
     <body>
         <div class="backdrop"></div>
         <a class="backtop fas fa-arrow-up" href="#"></a>
-
-        <!--=====================================
-                    HEADER TOP PART END 
-        =======================================-->
-
+        
         <!--=====================================
                     HEADER TOP PART START
         =======================================-->
@@ -102,7 +97,10 @@
         <!--=====================================
                     HEADER TOP PART END 
         =======================================-->
-            <!--=====================================
+
+
+
+        <!--=====================================
                     HEADER PART START
         =======================================-->
         <header class="header-part">
@@ -149,7 +147,8 @@
                     HEADER PART END
         =======================================-->
 
-            <!--=====================================
+
+        <!--=====================================
                     NAVBAR PART START
         =======================================-->
         <nav class="navbar-part">
@@ -225,7 +224,7 @@
                                 <li class="navbar-item dropdown-megamenu">
                                     <a class="navbar-link dropdown-arrow" href="#">category</a>
                                     <div class="megamenu">
-                                        <div class="container">
+                                        <div class="container megamenu-scroll">
                                             <div class="row row-cols-5">
                                                 <div class="col">
                                                     <div class="megamenu-wrap">
@@ -410,7 +409,9 @@
         <!--=====================================
                     NAVBAR PART END
         =======================================-->
-        
+
+
+
         <!--=====================================
                 CATEGORY SIDEBAR PART START
         =======================================-->
@@ -777,7 +778,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i>authentic</a>
+                        <a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i>authentication</a>
                         <ul class="dropdown-list">
                             <li><a href="login.html">login</a></li>
                             <li><a href="register.html">register</a></li>
@@ -967,10 +968,11 @@
         <!--=====================================
                     PRODUCT VIEW END
         =======================================-->
+    {% block 'body' %}
 
-{% block 'body' %}
+    {% endblock 'body' %}
 
-{% endblock 'body' %}
+
 
         <!--=====================================
                     NEWSLETTER PART START
@@ -1159,7 +1161,7 @@
         =======================================-->
         <!-- VENDOR -->
         <script src="{% static 'vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
-        <script src="{% static 'vendor/bootstrap/popper.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrapss/popper.min.js' %}"></script>
         <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
         <script src="{% static 'vendor/countdown/countdown.min.js' %}"></script>
         <script src="{% static 'vendor/niceselect/nice-select.min.js' %}"></script>
