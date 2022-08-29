@@ -328,8 +328,8 @@
                                 <button class="product-wish wish">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                <a class="product-image" href="product-video.html">
-                                    <img src="images/product/01.jpg" alt="product">
+                                <a class="product-image" href="{% url 'products:Detail_list' prealted.id %}">
+                                    <img src="{{prealted.image.url}}" alt="product">
                                 </a>
                                 <div class="product-widget">
                                     <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -344,10 +344,10 @@
                                     <i class="active icofont-star"></i>
                                     <i class="active icofont-star"></i>
                                     <i class="icofont-star"></i>
-                                    <a href="product-video.html">(3)</a>
+                                    <a href="{% url 'products:Detail_list' prealted.id %}">(3)</a>
                                 </div>
                                 <h6 class="product-name">
-                                    <a href="product-video.html">{{prealted}}</a>
+                                    <a href="{% url 'products:Detail_list' prealted.id %}">{{prealted}}</a>
                                 </h6>
                                 <h6 class="product-price">
                                     <del>$34</del>
