@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
+    {% load static %}
+        {% block 'css'%}
+        <link rel="stylesheet" href="{% static 'css/all-category.css' %}">
+        {% endblock 'css'%}
+
 {% block 'body' %}
         <!--=====================================
                     BANNER PART START
         =======================================-->
         <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
             <div class="container">
-                <h2>brand list</h2>
+                <h2>all category</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">brand-list</li>
+                    <li class="breadcrumb-item active" aria-current="page">all-category</li>
                 </ol>
             </div>
         </section>
@@ -18,7 +23,7 @@
 
 
         <!--=====================================
-                    BRAND LIST PART START
+                    CATEGORY PART START
         =======================================-->
         <section class="inner-section">
             <div class="container">
@@ -35,31 +40,29 @@
                             </div>
                             <div class="filter-short">
                                 <label class="filter-label">Short by :</label>
-                                <select class="form-select filter-select isotope-select">
-                                    <option value="*">show all</option>
-                                    <option value=".vegetables">vegetables</option>
-                                    <option value=".fruits">fruits</option>
-                                    <option value=".drinks">drinks</option>
-                                    <option value=".fishes">fishes</option>
-                                    <option value=".meats">meats</option>
+                                <select class="form-select filter-select">
+                                    <option selected>default</option>
+                                    <option value="3">trending</option>
+                                    <option value="1">featured</option>
+                                    <option value="2">recommend</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 isotope-items">
-                {% for brands in brand %}
-                    <div class="col all vegetables">
-                        <div class="brand-wrap">
-                            <div class="brand-media">
-                                <img src="{{brands.image.url}}" alt="brand">
-                                <div class="brand-overlay">
-                                    <a href="{% url 'products:brand_Detail' brands.id %}"><i class="fas fa-link"></i></a>
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
+                {% for catgory in catgory %}
+                    <div class="col">
+                        <div class="category-wrap">
+                            <div class="category-media">
+                                <img src="{{catgory.image.url}}" alt="category">
+                                <div class="category-overlay">
+                                    <a href="shop-3column.html"><i class="fas fa-link"></i></a>
                                 </div>
                             </div>
-                            <div class="brand-meta">
-                                <h4>{{brands}}</h4>
-                                <p>({{brands.product_count}} items)</p>
+                            <div class="category-meta">
+                                <h4>{{catgory}}</h4>
+                                <p>({{catgory.product_count}} items)</p>
                             </div>
                         </div>
                     </div>
@@ -92,6 +95,8 @@
             </div>
         </section>
         <!--=====================================
-                    BRAND LIST PART END
+                    CATEGORY PART END
         =======================================-->
+
 {% endblock 'body' %}
+ 

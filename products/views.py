@@ -32,3 +32,11 @@ class BrandDetail(DetailView):
         context['brand_products'] = Products.objects.filter(brand = brand)
       #  context['brands'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
         return context
+
+
+class CatgoryList(ListView):
+    model = Catgory
+    def get_context_data(self , **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['catgory'] = Catgory.objects.all().annotate(product_count = Count('Catgory_prodcut'))
+        return context
