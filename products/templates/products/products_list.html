@@ -926,12 +926,12 @@
                                 <div class="product-card">
                                     <div class="product-media">
                                         <div class="product-label">
-                                            <label class="label-text new">{{products.flag}}</label>
+                                            <label class="label-text new">{{products.flags}}</label>
                                         </div>
                                         <button class="product-wish wish">
                                             <i class="fas fa-heart"></i>
                                         </button>
-                                        <a class="product-image" href="product-video.html">
+                                        <a class="product-image" href="{% url 'products:Detail_list' products.id %}">
                                             <img src="{{products.image.url}}" alt="product">
                                         </a>    
                                         <div class="product-widget">
@@ -947,7 +947,7 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="{% url 'products:Detail_list' products.id %}">(3)</a>
                                         </div>
                                         <h6 class="product-name">
                                             <a href="{% url 'products:Detail_list' products.id %}">{{products}}</a>

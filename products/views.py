@@ -30,5 +30,5 @@ class BrandDetail(DetailView):
         context = super().get_context_data(**kwargs)
         brand = self.get_object()
         context['brand_products'] = Products.objects.filter(brand = brand)
-        context['brands'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
+      #  context['brands'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
         return context
