@@ -5,6 +5,7 @@ from .models import Products , ProductsImages , Brand , Catgory
 from django.db.models import Count
 class ProudctView(ListView):
     model = Products
+    paginate_by = 150
 
 class ProudctDetail(DetailView):
     model = Products

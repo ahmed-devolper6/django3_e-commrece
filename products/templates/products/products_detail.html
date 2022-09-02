@@ -14,7 +14,7 @@
                 <h2>product simple</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="shop-4column.html">shop-4column</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'products:proudct_list' %}">products</a></li>
                     <li class="breadcrumb-item active" aria-current="page">product-simple</li>
                 </ol>
             </div>
@@ -89,7 +89,7 @@
                                 <del>${{products.price}}</del>
                                 <span>${{products.price}}<small>/per kilo</small></span>
                             </h3>
-                            <p class="details-desc">{{products.dec}}</p>
+                            <p class="details-desc">{{products.subtitle}}</p>
                             <div class="details-list-group">
                                 <label class="details-list-title">tags:</label>
                                 <ul class="details-tag-list">
@@ -123,7 +123,7 @@
                                     <i class="icofont-heart"></i>
                                     <span>add to wish</span>
                                 </a>
-                                <a class="details-compare" href="compare.html" title="Compare This Item">
+                                <a class="details-compare" hr   ef="compare.html" title="Compare This Item">
                                     <i class="fas fa-random"></i>
                                     <span>Compare This</span>
                                 </a>
@@ -148,7 +148,7 @@
                         <div class="product-details-frame">
                             <h3 class="frame-title">Description</h3>
                             <div class="tab-descrip">
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, ex! Incidunt nemo aspernatur fugiat, saepe suscipit sit perferendis illum magnam voluptates aliquid blanditiis, dolor assumenda dolorem ullam harum, doloribus molestiae! Unde voluptas maiores exercitationem aperiam debitis accusantium, placeat vero neque, atque eius numquam incidunt, culpa a odit consequatur nostrum aut nisi quisquam sequi dignissimos sed. Odio necessitatibus officiis repudiandae omnis soluta fugiat aliquam eius quae. Unde, ipsam atque assumenda consequuntur quia alias nulla, cupiditate ab quos eveniet pariatur expedita repellendus fugit. Quisquam fuga et, dolore aut temporibus atque itaque nesciunt reiciendis nobis, deleniti nihil vel qui perferendis molestias aliquam doloremque.</p>
+                                <p>{{products.dec}}</p>
                             </div>
                         </div>
                         <div class="product-details-frame">
@@ -323,7 +323,7 @@
                         <div class="product-card">
                             <div class="product-media">
                                 <div class="product-label">
-                                    <label class="label-text sale">{{prealted.flag}}</label>
+                                    <label class="label-text sale">{{prealted.flags}}</label>
                                 </div>
                                 <button class="product-wish wish">
                                     <i class="fas fa-heart"></i>

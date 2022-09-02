@@ -110,7 +110,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="header-media-group">
-                        <button class="header-user"><img src="images/user.png" alt="user"></button>
+                        <button class="header-user"><img src="{% static 'images/user.png' %}" alt="user"></button>
                         <a href="index.html"><img src="{{info.logo.url}}" alt="logo"></a>
                         <button class="header-src"><i class="fas fa-search"></i></button>
                     </div>
@@ -119,7 +119,7 @@
                         <img src="{{info.logo.url}}" alt="logo">
                     </a>
                     <a href="login.html" class="header-widget" title="My Account">
-                        <img src="images/user.png" alt="user">
+                        <img src="{% static 'images/user.png' %}" alt="user">
                         <span>join</span>
                     </a>
 
@@ -995,11 +995,11 @@
                             </a>
                             <p class="footer-desc">{{info.dec}}</p>
                             <ul class="footer-social">
-                                <li><a class="icofont-facebook" href="#"></a></li>
-                                <li><a class="icofont-twitter" href="#"></a></li>
-                                <li><a class="icofont-linkedin" href="#"></a></li>
-                                <li><a class="icofont-instagram" href="#"></a></li>
-                                <li><a class="icofont-pinterest" href="#"></a></li>
+                                <li><a class="icofont-facebook" href="{{info.fb_link}}"></a></li>
+                                <li><a class="icofont-twitter" href="{{info.tw_link}}"></a></li>
+                                <li><a class="icofont-linkedin" href="{{info.li_link}}"></a></li>
+                                <li><a class="icofont-instagram" href = "{{info.in_link}}"></a></li>
+                                <li><a class="icofont-pinterest" href="{{info.pen_link}}"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -1084,8 +1084,9 @@
                     JS LINK PART START
         =======================================-->
         <!-- VENDOR -->
+        
         <script src="{% static 'vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
-        <script src="{% static 'vendor/bootstrapss/popper.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/popper.min.js' %}"></script>
         <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
         <script src="{% static 'vendor/countdown/countdown.min.js' %}"></script>
         <script src="{% static 'vendor/niceselect/nice-select.min.js' %}"></script>

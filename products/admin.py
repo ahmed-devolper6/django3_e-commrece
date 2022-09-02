@@ -7,13 +7,13 @@ class proudcutimageinline(admin.TabularInline):
     model = ProductsImages
 class ProductModelAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     summernote_fields = '__all__'
-    list_display =  ['name' ,  'flags'  ]
+    list_display =  ['name' , 'id' ]
     inlines = [proudcutimageinline]
 
 
     
 admin.site.register(Products , ProductModelAdmin)
 admin.site.register(ProductsImages)
-admin.site.register(Catgory)
-admin.site.register(Brand)
+admin.site.register(Catgory )
+admin.site.register(Brand )
 admin.site.register(Reviw)
