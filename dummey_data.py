@@ -59,4 +59,4 @@ def seed_products(n):
 
 #seed_brand(15)
 #seed_catgory(15)
-seed_products(1000)
+seed_products(98)

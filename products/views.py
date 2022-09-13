@@ -3,10 +3,12 @@ from django.shortcuts import render
 from django.views.generic import ListView , DetailView
 from .models import Products , ProductsImages , Brand , Catgory
 from django.db.models import Count
+def tester(request):
+    obj = Products.objects.all()
+    return render(request , 'products/test.html' , {'test':obj})
 class ProudctView(ListView):
     model = Products
     paginate_by = 100
-
 class ProudctDetail(DetailView):
     model = Products
 
@@ -30,10 +32,9 @@ class BrandDetail(DetailView):
     def get_context_data(self , **kwargs):
         context = super().get_context_data(**kwargs)
         brand = self.get_object()
-        context['brand_products'] = Products.objects.filter(brand = brand)
-      #  context['brands'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
-        return context
-
+        context['brands'] = Products.objects.filter(brand = brand) 
+        context['brands'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
+        return context 
 
 class CatgoryList(ListView):
     model = Catgory
