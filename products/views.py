@@ -1,10 +1,26 @@
-
 from django.shortcuts import render
 from django.views.generic import ListView , DetailView
 from .models import Products , ProductsImages , Brand , Catgory
-from django.db.models import Count
+from django.db.models import Count , Q , F , Value
+from django.db.models.aggregates import Min , Max , Sum , Avg
+from django.db.models.functions import Concat
 def tester(request):
     obj = Products.objects.all()
+    #obj = Products.objects.filter(price__range = (0,100))
+    #obj = Products.objects.filter(price__range = (0,100)).order_by('-name')
+    #obj = Products.objects.select_related('brand').all().order_by('-price')
+    #obj =   Products.objects.select_related('brand').filter()
+    #obj = Products.objects.filter(Q(name__endswith = 'S') & Q(price__lt = 80))
+    #obj = Products.objects.filter(flag__isnull = True)
+    #obj = Products.objects.filter(Q(qounitiy__lt = 50) & Q(price__lt = 70))
+    #obj = Products.objects.filter(qounitiy = F('price'))
+    #obj = Products.objects.filter(qounitiy = F('catgory__id'))
+    #obj = Products.objects.values('name' , 'catgory' , 'catgory__id' , 'price')
+    #obj = Products.objects.only('name' , 'catgory')
+    #obj = Products.objects.annotate(is_new = Value(True))
+    #obj = Products.objects.annotate(
+    #    full_name = Concat('name' , Value(' ') , 'flags' )
+    #)
     return render(request , 'products/test.html' , {'test':obj})
 class ProudctView(ListView):
     model = Products
@@ -31,9 +47,9 @@ class BrandDetail(DetailView):
     model = Brand
     def get_context_data(self , **kwargs):
         context = super().get_context_data(**kwargs)
+        context['brand_c'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
         brand = self.get_object()
         context['brands'] = Products.objects.filter(brand = brand) 
-        context['brands'] = Brand.objects.all().annotate(product_count = Count('brand_product'))
         return context 
 
 class CatgoryList(ListView):
