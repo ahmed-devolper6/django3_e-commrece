@@ -26,11 +26,11 @@ class Products(models.Model):
     flags = models.CharField( _('Flags'), max_length=10 , choices= PRODECT_FLAG ,)
     catgory = models.ForeignKey('Catgory' , on_delete= models.SET_NULL , null= True , blank= True , related_name='Catgory_prodcut', verbose_name=_('Catgory'))
     video_url = models.URLField(_('video_url'), null=True , blank=True)
-    qounitiy = models.IntegerField(default=50)
+    
+    
     def __str__(self) -> str:
         return self.name
-    def get_avg(self):
-        pass
+    
 
 class ProductsImages(models.Model):
     products = models.ForeignKey(Products ,  verbose_name=_('Product_image') , on_delete= models.CASCADE)
@@ -55,7 +55,7 @@ class Brand(models.Model):
 
 class Reviw(models.Model):
     user = models.ForeignKey(User , on_delete= models.SET_NULL , null=True , blank=True , verbose_name= _('user'))
-    products = models.ForeignKey(Products , on_delete=models.SET_NULL , null=True , blank= True,verbose_name=_('product_review') , related_name='proudct_review')
+    products = models.ForeignKey(Products , on_delete=models.SET_NULL , null=True , blank= True,verbose_name=_('product' ))
     commnt = models.CharField(_('commnet') ,max_length=300)
     rate = models.IntegerField(_('Rate'))
     create_at = models.DateField(default=timezone.now, verbose_name=_('create_at'))
