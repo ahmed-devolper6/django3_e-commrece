@@ -13,7 +13,7 @@ DATA_TYPE = (
 )
 class Proflie(models.Model):
     user = models.OneToOneField(User , on_delete= models.CASCADE , related_name='user_Proflie')
-    image = models.ImageField(upload_to = 'users')
+    image = models.ImageField(upload_to = 'users' )
     code = models.CharField(max_length=10 , default=grente_code)
     code_used = models.BooleanField(default=False)
     active = models.BooleanField(default=False)
@@ -26,7 +26,7 @@ def geateproflie(sender, instance, created, **kwargs):
 class Numbers(models.Model):
     user = models.ForeignKey(User , on_delete= models.CASCADE , related_name='User_number')
     type = models.CharField(choices=DATA_TYPE , max_length=10)
-    phone_num = models.IntegerField(max_length=15)
+    phone_num = models.CharField(max_length=15)
 
 class Address(models.Model):
     user = models.ForeignKey(User , on_delete= models.CASCADE , related_name='User_Adderrs')
