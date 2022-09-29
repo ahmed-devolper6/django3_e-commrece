@@ -9,6 +9,7 @@ STATUS_CART = (
     ('inprogecss','inprogecss'),
     ('compalted','compalted'),
 )
+#the carts model
 class Cart(models.Model):
     user = models.ForeignKey(User , related_name='user_cart' , on_delete=models.SET_NULL , null=True )
     code = models.CharField(max_length=8 , default= grente_code)
@@ -27,6 +28,7 @@ STATUS = (
     ('shiped','shiped'),
     ('delivered','delivered')
 )
+#the oders model
 class Oders(models.Model):
     user = models.ForeignKey(User , related_name='user_oder' , on_delete=models.SET_NULL , null=True )
     code = models.CharField(max_length=8 , default= grente_code)
