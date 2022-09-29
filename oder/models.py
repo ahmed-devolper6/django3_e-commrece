@@ -9,17 +9,18 @@ STATUS_CART = (
     ('inprogecss','inprogecss'),
     ('compalted','compalted'),
 )
-class Carts(models.Model):
+class Cart(models.Model):
     user = models.ForeignKey(User , related_name='user_cart' , on_delete=models.SET_NULL , null=True )
     code = models.CharField(max_length=8 , default= grente_code)
     status = models.CharField(max_length=15 , choices= STATUS_CART)
 
-class OderDeitl(models.Model):
-    proudct = models.ForeignKey(Products , related_name='product_cart' , on_delete= models.CASCADE)
-    cart = models.ForeignKey(Carts , related_name='cart_detail' , on_delete= models.SET_NULL , null=True , blank=True)
+class CartDeitl(models.Model):
+    proudct = models.ForeignKey(Products , related_name='product_cart' , on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart , related_name='cart_detail' , on_delete= models.SET_NULL , null=True , blank=True)
     quantiity = models.IntegerField()
     price = models.FloatField()
-    
+    total = models.FloatField()
+
 STATUS = (
     ('receieved','receieved'),
     ('processed','processed'),

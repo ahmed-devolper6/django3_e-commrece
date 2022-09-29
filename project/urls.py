@@ -20,8 +20,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("accounts/", include("accounts.urls", namespace = 'accounts' )),
     path("accounts/", include("django.contrib.auth.urls")),
+    
     path('admin/', admin.site.urls),
     path('shop/', include('products.urls' , namespace='products')),
+    path('oder/', include('oder.urls' , namespace='oder')),
+
     path('summernote/', include('django_summernote.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]

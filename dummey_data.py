@@ -57,6 +57,6 @@ def seed_products(n):
             flags = flag,
         )
 
-#seed_brand(15)
-#seed_catgory(15)
-seed_products(98)
+seed_brand(250)
+seed_catgory(250)
+seed_products(850)
