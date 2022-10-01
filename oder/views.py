@@ -10,7 +10,7 @@ def add_to_cart(request):
         cart = Cart.objects.get(user = request.user , status = 'inprogecss')
         cart_detil,created = CartDeitl.objects.get_or_create(
             cart = cart,
-            proudct = proudct
+            proudct = proudct,
         )
         cart_detil.quantiity = quantitiy
         cart_detil.price = proudct.price
