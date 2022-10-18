@@ -1,23 +1,12 @@
-from .serializers import ProductsSerializers
-from .models import Products
+from .serializers import ProductsSerializers , BrandSerializers , CatgorySerializers
+from .models import Products , Brand , Catgory
 from rest_framework.views import Response
 from rest_framework.decorators import api_view
 from rest_framework import generics
 
-@api_view(['GET'])
-def proudct_list_api(request):
-    objects = Products.objects.all()
-    data = ProductsSerializers(objects , many = True).data
-    return Response({'status':200 , 'products':data})
 
 
-@api_view(['GET'])
-def proudct_detail_api(request , id):
-    objects = Products.objects.get(id = id)
-    data = ProductsSerializers(objects).data
-    return Response({'status':200 , 'product':data})
-
-class Proudctdetil_api(generics.RetrieveUpdateDestroyAPIView):
+class ProudctDetil_Api(generics.RetrieveUpdateDestroyAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializers
  
@@ -26,3 +15,18 @@ class ProudctList(generics.ListCreateAPIView):
     serializer_class = ProductsSerializers
 
 
+class BrandList_api(generics.ListCreateAPIView):
+    queryset =  Brand.objects.all()
+    serializer_class = BrandSerializers
+
+class BrandDetil_Api(generics.RetrieveUpdateDestroyAPIView):
+    queryset =  Brand.objects.all()
+    serializer_class = BrandSerializers
+
+class CatgoryList_api(generics.ListCreateAPIView):
+    queryset =  Catgory.objects.all()
+    serializer_class = CatgorySerializers
+
+class CatgoryDetil_Api(generics.RetrieveUpdateDestroyAPIView):
+    queryset =  Catgory.objects.all()
+    serializer_class = CatgorySerializers

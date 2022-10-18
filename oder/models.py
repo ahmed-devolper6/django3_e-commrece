@@ -28,7 +28,7 @@ STATUS = (
     ('shiped','shiped'),
     ('delivered','delivered')
 )
-#the oders model
+#the oders model 
 class Oders(models.Model):
     user = models.ForeignKey(User , related_name='user_oder' , on_delete=models.SET_NULL , null=True )
     code = models.CharField(max_length=8 , default= grente_code)
