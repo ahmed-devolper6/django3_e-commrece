@@ -55,7 +55,7 @@ class Brand(models.Model):
 
 class Reviw(models.Model):
     user = models.ForeignKey(User , on_delete= models.SET_NULL , null=True , blank=True , verbose_name= _('user'))
-    products = models.ForeignKey(Products , on_delete=models.SET_NULL , null=True , blank= True,verbose_name=_('product' ))
+    products = models.ForeignKey(Products , related_name = 'Proudct_Review' , on_delete=models.SET_NULL , null=True , blank= True,verbose_name=_('product' ))
     commnt = models.CharField(_('commnet') ,max_length=300)
     rate = models.IntegerField(_('Rate'))
     create_at = models.DateField(default=timezone.now, verbose_name=_('create_at'))

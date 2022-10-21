@@ -9,8 +9,6 @@ urlpatterns = [
     path('brand', BrandView.as_view() , name="brand_list"),
     path('brand/<int:pk>', BrandDetail.as_view() , name="brand_Detail"),
     path('catgory', CatgoryList.as_view() , name="catgory_list"),
-
-
     ####    API    ################
     path('api/proudct/', ProudctList.as_view()),
     path('api/proudct/<pk>', ProudctDetil_Api.as_view()),
@@ -18,5 +16,4 @@ urlpatterns = [
     path('api/brand/<int:pk>', BrandDetil_Api.as_view()),
     path('api/catgory/', CatgoryList_api.as_view()),
     path('api/catgory/<int:pk>', CatgoryDetil_Api.as_view()),
-
 ]
