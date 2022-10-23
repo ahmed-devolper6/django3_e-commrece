@@ -1,8 +1,8 @@
 from django.shortcuts import render , redirect
 from .models import Proflie , Address , Numbers 
-# Create your views here.
 from .forms import Sginup , ActiveFrom
 from django.core.mail import send_mail
+# Create your views here.
 def sginup(request):
     if request.method == 'POST':
         form = Sginup(request.POST)

@@ -45,14 +45,20 @@ INSTALLED_APPS = [
     'settings',
     'django_summernote', 
     'rest_framework',
-    
+    'django_filters', 
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ]
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': {
+        'rest_framework.pagination.LimitOffsetPagination',
+    },
+    'PAGE_SIZE': 100,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 MIDDLEWARE = [
