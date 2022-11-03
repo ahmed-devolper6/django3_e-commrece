@@ -173,14 +173,15 @@
                         <div class="product-details-frame">
                             <h3 class="frame-title">Reviews (2)</h3>
                             <ul class="review-list">
+                                {% for review in review %}
                                 <li class="review-item">
                                     <div class="review-media">
                                         <a class="review-avatar" href="#">
-                                            <img src="images/avatar/01.jpg" alt="review">
+                                            <img src="{{review.user.user_Proflie.image.url}}" alt="review">
                                         </a>
                                         <h5 class="review-meta">
-                                            <a href="#">miron mahmud</a>
-                                            <span>June 02, 2020</span>
+                                            <a href="#">{{review.user}}</a>
+                                            <span>{{review.create_at}}</span>
                                         </h5>
                                     </div>
                                     <ul class="review-rating">
@@ -190,97 +191,29 @@
                                         <li class="icofont-ui-rating"></li>
                                         <li class="icofont-ui-rate-blank"></li>
                                     </ul>
-                                    <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus hic amet qui velit, molestiae suscipit perferendis, autem doloremque blanditiis dolores nulla excepturi ea nobis!</p>
-                                    <form class="review-reply">
-                                        <input type="text" placeholder="reply your thoughts">
-                                        <button><i class="icofont-reply"></i>reply</button>
-                                    </form>
-                                    <ul class="review-reply-list">
-                                        <li class="review-reply-item">
-                                            <div class="review-media">
-                                                <a class="review-avatar" href="#">
-                                                    <img src="images/avatar/02.jpg" alt="review">
-                                                </a>
-                                                <h5 class="review-meta">
-                                                    <a href="#">labonno khan</a>
-                                                    <span><b>author -</b> June 02, 2020</span>
-                                                </h5>
-                                            </div>
-                                            <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus hic amet qui velit, molestiae suscipit perferendis, autem doloremque blanditiis dolores nulla excepturi ea nobis!</p>
-                                            <form class="review-reply">
-                                                <input type="text" placeholder="reply your thoughts">
-                                                <button><i class="icofont-reply"></i>reply</button>
-                                            </form>
-                                        </li>
-                                        <li class="review-reply-item">
-                                            <div class="review-media">
-                                                <a class="review-avatar" href="#">
-                                                    <img src="images/avatar/03.jpg" alt="review">
-                                                </a>
-                                                <h5 class="review-meta">
-                                                    <a href="#">tahmina bonny</a>
-                                                    <span>June 02, 2020</span>
-                                                </h5>
-                                            </div>
-                                            <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus hic amet qui velit, molestiae suscipit perferendis, autem doloremque blanditiis dolores nulla excepturi ea nobis!</p>
-                                            <form class="review-reply">
-                                                <input type="text" placeholder="reply your thoughts">
-                                                <button><i class="icofont-reply"></i>reply</button>
-                                            </form>
-                                        </li>
-                                    </ul>
+                                    <p class="review-desc">{{review.commnt}}</p>    
                                 </li>
-                                <li class="review-item">
-                                    <div class="review-media">
-                                        <a class="review-avatar" href="#">
-                                            <img src="images/avatar/04.jpg" alt="review">
-                                        </a>
-                                        <h5 class="review-meta">
-                                            <a href="#">shipu shikdar</a>
-                                            <span>June 02, 2020</span>
-                                        </h5>
-                                    </div>
-                                    <ul class="review-rating">
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rate-blank"></li>
-                                    </ul>
-                                    <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus hic amet qui velit, molestiae suscipit perferendis, autem doloremque blanditiis dolores nulla excepturi ea nobis!</p>
-                                    <form class="review-reply">
-                                        <input type="text" placeholder="reply your thoughts">
-                                        <button><i class="icofont-reply"></i>reply</button>
-                                    </form>
-                                </li>
+                                {% endfor %}
+
                             </ul>
                         </div>
                         <div class="product-details-frame">
                             <h3 class="frame-title">add your review</h3>
-                            <form class="review-form">
+                            <form class="review-form" method="post" action='{% url 'products:add_review' products.id %}'>
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="star-rating">
-                                            <input type="radio" name="rating" id="star-1"><label for="star-1"></label>
-                                            <input type="radio" name="rating" id="star-2"><label for="star-2"></label>
-                                            <input type="radio" name="rating" id="star-3"><label for="star-3"></label>
-                                            <input type="radio" name="rating" id="star-4"><label for="star-4"></label>
-                                            <input type="radio" name="rating" id="star-5"><label for="star-5"></label>
+                                            <input type="radio" name="rate" value=5  id="star-1"><label for="star-1"></label>
+                                            <input type="radio" name="rate" value=4 id="star-2"><label for="star-2"></label>
+                                            <input type="radio" name="rate" value=3 id="star-3"><label for="star-3"></label>
+                                            <input type="radio" name="rate" value=2 id="star-4"><label for="star-4"></label>
+                                            <input type="radio" name="rate" value=1 id="star-5"><label for="star-5"></label>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <textarea class="form-control" placeholder="Describe"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email">
+                                            <textarea class="form-control" name ="commnt" placeholder="Describe"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

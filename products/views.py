@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView , DetailView
-from .models import Products , ProductsImages , Brand , Catgory
+from .models import Products , ProductsImages , Brand , Catgory , Reviw
 from django.db.models import Count , Q , F , Value
 from django.db.models.aggregates import Min , Max , Sum , Avg
 from django.db.models.functions import Concat
+from .froms import ProudctReviewFrom
 def tester(request):
     obj = Products.objects.all()
     #obj = Products.objects.filter(price__range = (0,100))
@@ -33,6 +34,7 @@ class ProudctDetail(DetailView):
         myproducts = self.get_object()
         context['images'] = ProductsImages.objects.filter(products=myproducts)
         context['realated'] = Products.objects.filter(catgory = myproducts.catgory)
+        context['review'] = Reviw.objects.filter(products = myproducts)
         return context
 class BrandView(ListView):
     model = Brand
@@ -57,3 +59,17 @@ class CatgoryList(ListView):
         context = super().get_context_data(**kwargs)
         context['catgory'] = Catgory.objects.all().annotate(product_count = Count('Catgory_prodcut'))
         return context
+
+
+
+def add_review(request,id):
+    proucts =  Products.objects.get(id=id)
+    if request.method == 'POST':
+        form = ProudctReviewFrom(request.POST)
+        if form.is_valid():
+            myfrom = form.save(commit=False)
+            myfrom.products = proucts
+            myfrom.user = request.user
+            myfrom.save()
+    else:
+        form = ProudctDetail()
