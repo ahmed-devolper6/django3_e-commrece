@@ -1,0 +1,21 @@
+{% for review in review %}
+<li class="review-item">
+    <div class="review-media">
+        <a class="review-avatar" href="#">
+            <img src="{{review.user.user_Proflie.image.url}}" alt="review">
+        </a>
+        <h5 class="review-meta">
+            <a href="#">{{review.user}}</a>
+            <span>{{review.create_at}}</span>
+        </h5>
+    </div>
+    <ul class="review-rating">
+        <li class="icofont-ui-rating"></li>
+        <li class="icofont-ui-rating"></li>
+        <li class="icofont-ui-rating"></li>
+        <li class="icofont-ui-rating"></li>
+        <li class="icofont-ui-rate-blank"></li>
+    </ul>
+    <p class="review-desc">{{review.commnt}}</p>    
+</li>
+{% endfor %}

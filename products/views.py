@@ -35,6 +35,7 @@ class ProudctDetail(DetailView):
         context['images'] = ProductsImages.objects.filter(products=myproducts)
         context['realated'] = Products.objects.filter(catgory = myproducts.catgory)
         context['review'] = Reviw.objects.filter(products = myproducts)
+        #context['review_count'] = Reviw.objects.all().annotate(product_count = Count('Proudct_Review'))
         return context
 class BrandView(ListView):
     model = Brand
@@ -60,8 +61,8 @@ class CatgoryList(ListView):
         context['catgory'] = Catgory.objects.all().annotate(product_count = Count('Catgory_prodcut'))
         return context
 
-
-
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 def add_review(request,id):
     proucts =  Products.objects.get(id=id)
     if request.method == 'POST':
@@ -71,5 +72,6 @@ def add_review(request,id):
             myfrom.products = proucts
             myfrom.user = request.user
             myfrom.save()
-    else:
-        form = ProudctDetail()
+            review = Reviw.objects.filter(products=proucts)
+            html = render_to_string('include/reviews.html',{'review':review , request:request})
+            return JsonResponse({'resulat':html})

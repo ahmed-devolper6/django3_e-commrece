@@ -171,35 +171,14 @@
                             </table>
                         </div>
                         <div class="product-details-frame">
-                            <h3 class="frame-title">Reviews (2)</h3>
-                            <ul class="review-list">
-                                {% for review in review %}
-                                <li class="review-item">
-                                    <div class="review-media">
-                                        <a class="review-avatar" href="#">
-                                            <img src="{{review.user.user_Proflie.image.url}}" alt="review">
-                                        </a>
-                                        <h5 class="review-meta">
-                                            <a href="#">{{review.user}}</a>
-                                            <span>{{review.create_at}}</span>
-                                        </h5>
-                                    </div>
-                                    <ul class="review-rating">
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rating"></li>
-                                        <li class="icofont-ui-rate-blank"></li>
-                                    </ul>
-                                    <p class="review-desc">{{review.commnt}}</p>    
-                                </li>
-                                {% endfor %}
-
+                            <h3 class="frame-title">Reviews ({{reviewC}})</h3>
+                            <ul class="review-list" id="reviewdiv">
+                             {% include 'include/reviews.html' %}
                             </ul>
                         </div>
                         <div class="product-details-frame">
                             <h3 class="frame-title">add your review</h3>
-                            <form class="review-form" method="post" action='{% url 'products:add_review' products.id %}'>
+                            <form class="review-form" method="post" action='{% url 'products:add_review' products.id %}' id="ReviewFrom">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -217,7 +196,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <button class="btn btn-inline">
+                                        <button class="btn btn-inline" id="sumbit">
                                             <i class="icofont-water-drop"></i>
                                             <span>drop your review</span>
                                         </button>
@@ -311,7 +290,27 @@
         <!--=====================================
                  PRODUCT RELATED PART END
         =======================================-->
-
+        
+<script src="{% static 'js/jquery.ajaxy.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $(document).on('sumbit','#ReviewFrom',function(event){
+            event.preventDefault();
+            $.ajax({
+                type:$(this).attr('method'),
+                url:$(this).attr('action'),
+                data:$(this).serialize(),
+                dataType:'json',
+                success:function(response){
+                    $('#reviewdiv').html(response['resulat'])
+                },
+                error:function(err){
+                    console.log(err)
+                },
+            })
+        })
+    })
+</script>
 {% endblock 'body' %}
 
  
