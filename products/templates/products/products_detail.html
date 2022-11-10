@@ -107,11 +107,11 @@
                                     <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
                                 </ul>
                             </div>
-                                <form action="{% url 'oder:add_to_cart' %}" method="post">
+                                <form action={% url 'oder:add_to_cart' %} method="post">
                                     {% csrf_token %}
                                     <input type="number" name="quantity" value="1">
                                     <input  type="hidden" name="proudct_id" value="{{object.id}}">
-                                    <input type="sumbit" class="product-add" value="add to card">
+                                    <button type="sumbit">add to cart</button>
                                 </form>
                             </div>
                             <div class="details-action-group">
@@ -170,7 +170,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="product-details-frame">
+                        <div class="product-details-frame" >
                             <h3 class="frame-title">Reviews ({{reviewC}})</h3>
                             <ul class="review-list" id="reviewdiv">
                              {% include 'include/reviews.html' %}
@@ -178,7 +178,7 @@
                         </div>
                         <div class="product-details-frame">
                             <h3 class="frame-title">add your review</h3>
-                            <form class="review-form" method="post" action='{% url 'products:add_review' products.id %}' id="ReviewFrom">
+                            <form class="review-form" method="post" action={% url 'products:add_review' object.id %} id="ReviewFrom">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -196,7 +196,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <button class="btn btn-inline" id="sumbit">
+                                        <button id="submit" class="btn btn-inline">
                                             <i class="icofont-water-drop"></i>
                                             <span>drop your review</span>
                                         </button>
@@ -291,10 +291,10 @@
                  PRODUCT RELATED PART END
         =======================================-->
         
-<script src="{% static 'js/jquery.ajaxy.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(document).ready(function(){
-        $(document).on('sumbit','#ReviewFrom',function(event){
+        $(document).on('submit','#ReviewFrom',function(event){
             event.preventDefault();
             $.ajax({
                 type:$(this).attr('method'),
@@ -302,7 +302,7 @@
                 data:$(this).serialize(),
                 dataType:'json',
                 success:function(response){
-                    $('#reviewdiv').html(response['resulat'])
+                    $('#reviewdiv').html(response["resulat"]);
                 },
                 error:function(err){
                     console.log(err)

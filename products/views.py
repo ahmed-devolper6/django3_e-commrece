@@ -73,5 +73,5 @@ def add_review(request,id):
             myfrom.user = request.user
             myfrom.save()
             review = Reviw.objects.filter(products=proucts)
-            html = render_to_string('include/reviews.html',{'review':review , request:request})
-            return JsonResponse({'resulat':html})
+            html = render_to_string('include/reviews.html',{"review":review , request:request})
+            return JsonResponse({"resulat":html})

@@ -5,9 +5,9 @@ from .models import Cart , CartDeitl
 def add_to_cart(request):
     if request.method == 'POST':
         proudct_id = request.POST['proudct_id']
-        quantitiy = request.POST['quantitiy']
-        proudct = Products.objects.get(id = proudct_id)
-        cart = Cart.objects.get(user = request.user , status = 'inprogecss')
+        quantitiy = request.POST['quantity']
+        proudct = Products.objects.get(id=proudct_id)
+        cart = Cart.objects.get(user=request.user,status='inprogecss')
         cart_detil,created = CartDeitl.objects.get_or_create(
             cart = cart,
             proudct = proudct,
