@@ -35,9 +35,10 @@ class Oders(models.Model):
     user = models.ForeignKey(User , related_name='user_oder' , on_delete=models.SET_NULL , null=True )
     code = models.CharField(max_length=8 , default= grente_code)
     oder_time = models.DateTimeField(default=timezone.now)
-    deilevry_time = models.DateTimeField()
+    deilevry_time = models.DateTimeField(null=True,blank=True)
     status = models.CharField(max_length=15 , choices= STATUS)
-
+    def __str__(self) -> str:
+        return self.code
 class OderDeitl(models.Model):
     proudct = models.ForeignKey(Products , related_name='product_oder' , on_delete= models.CASCADE)
     oder = models.ForeignKey(Oders , related_name='oder_detail' , on_delete= models.SET_NULL , null=True , blank=True)
