@@ -87,6 +87,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'settings.company_context_processors.get_company_info',
                 'accounts.user_context_proscceor.get_user', 
+                'oder.cart_context_proscceor.user_cart',
             ],
         },
     },

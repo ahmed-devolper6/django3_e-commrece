@@ -16,6 +16,11 @@ class Cart(models.Model):
     status = models.CharField(max_length=15 , choices= STATUS_CART)
     def __str__(self):
         return self.code
+    def get_total(self):
+        total = 0
+        for proudcts in self.cart_detail.all():
+            total += proudcts.total
+        return total
 class CartDeitl(models.Model):
     proudct = models.ForeignKey(Products , related_name='product_cart' , on_delete=models.CASCADE)
     cart = models.ForeignKey(Cart , related_name='cart_detail' , on_delete= models.SET_NULL , null=True , blank=True)
@@ -24,6 +29,7 @@ class CartDeitl(models.Model):
     total = models.FloatField(null=True,blank = True)
     def __str__(self):
         return str(f'{self.proudct} - {self.total}')
+
 STATUS = (
     ('receieved','receieved'),
     ('processed','processed'),
@@ -45,3 +51,12 @@ class OderDeitl(models.Model):
     quantiity = models.IntegerField()
     price = models.FloatField()
     total = models.FloatField()
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=8)
+    quantiity = models.IntegerField()
+    value = models.FloatField()
+    form_date = models.DateField(default=timezone.now)
+    to_date = models.DateField(default=timezone.now)
+    is_valid = models.BooleanField(default=True)
